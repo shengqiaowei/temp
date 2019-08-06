@@ -7,13 +7,14 @@ class SchoolClassLib:
     def __init__(self):
         self.g_vcode = g_vcode
 
+
     #列出班级
     def list_school_class(self,gradeid=None):
         if gradeid!=None:
             params = {
                 'vcode':self.g_vcode,
                 'action':'list_classes_by_schoolgrade',
-                'gradeid':gradeid
+                'gradeid':int(gradeid)
             }
         else:
             params = {
@@ -23,7 +24,8 @@ class SchoolClassLib:
         response = requests.get(self.url,params=params)
         bodyDict = response.json()
         #以json形式打印response，缩进为2
-        pprint(bodyDict,indent=2)
+        pprint(bodyDict,indent=2,)
+        print('查询接口')
         return bodyDict
 
     #添加班级
@@ -54,14 +56,13 @@ class SchoolClassLib:
     def delete_all_school_classes(self):
         #先列出所有班级
         rd = self.list_school_class()
-        pprint(rd,indent=2)
 
         #删除所有班级
         for one in rd['retlist']:
             self.delete_school_class(one['id'])
 
         #再次列出七年级所有班级
-        rd = self.list_school_class(1)
+        rd = self.list_school_class()
         pprint(rd,indent=2)
 
         if rd['retlist']!=[]:
