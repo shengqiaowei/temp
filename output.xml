@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.6.8 on win32)" generated="20190808 23:38:58.229" rpa="false">
+<suite id="s1" name="Tc" source="E:\temp\tc">
+<suite id="s1-s1" name="D-空白数据" source="E:\temp\tc\d-空白数据">
+<suite id="s1-s1-s1" name="D-7年级1班" source="E:\temp\tc\d-空白数据\d-7年级1班">
+<kw name="Add School Class" library="SchoolClassLib" type="setup">
+<arguments>
+<arg>1</arg>
+<arg>1班</arg>
+<arg>60</arg>
+</arguments>
+<msg timestamp="20190808 23:38:58.440" level="INFO">{'reason': 'Traceback (most recent call last):\n'
+           '  File '
+           '"/home/yjyx/yijiao_src/yijiao_main/services/datamodel/schoolclass/models.py", '
+           'line 542, in addClass\n'
+           '    school_class = '
+           'self._addClass(name,schoolid,gradeid,studentlimit)\n'
+           '  File '
+           '"/home/yjyx/yijiao_src/yijiao_main/services/datamodel/schoolclass/models.py", '
+           'line 531, in _addClass\n'
+           '    school_class.save()\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/models/base.py", '
+           'line 710, in save\n'
+           '    force_update=force_update, update_fields=update_fields)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/models/base.py", '
+           'line 738, in save_base\n'
+           '    updated = self._save_table(raw, cls, force_insert, '
+           'force_update, using, update_fields)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/models/base.py", '
+           'line 822, in _save_table\n'
+           '    result = self._do_insert(cls._base_manager, using, fields, '
+           'update_pk, raw)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/models/base.py", '
+           'line 861, in _do_insert\n'
+           '    using=using, raw=raw)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/models/manager.py", '
+           'line 127, in manager_method\n'
+           '    return getattr(self.get_queryset(), name)(*args, **kwargs)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/models/query.py", '
+           'line 920, in _insert\n'
+           '    return query.get_compiler(using=using).execute_sql(return_id)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", '
+           'line 974, in execute_sql\n'
+           '    cursor.execute(sql, params)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/backends/utils.py", '
+           'line 64, in execute\n'
+           '    return self.cursor.execute(sql, params)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/utils.py", line '
+           '97, in __exit__\n'
+           '    six.reraise(dj_exc_type, dj_exc_value, traceback)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/backends/utils.py", '
+           'line 64, in execute\n'
+           '    return self.cursor.execute(sql, params)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/backends/mysql/base.py", '
+           'line 124, in execute\n'
+           '    return self.cursor.execute(query, args)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/MySQLdb/cursors.py", line '
+           '205, in execute\n'
+           '    self.errorhandler(self, exc, value)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/MySQLdb/connections.py", '
+           'line 36, in defaulterrorhandler\n'
+           '    raise errorclass, errorvalue\n'
+           'IntegrityError: (1062, "Duplicate entry \'1\\xe7\\x8f\\xad-607-1\' '
+           'for key \'name\'")\n',
+ 'retcode': 1}</msg>
+<status status="PASS" starttime="20190808 23:38:58.388" endtime="20190808 23:38:58.440"></status>
+</kw>
+<suite id="s1-s1-s1-s1" name="classManage" source="E:\temp\tc\d-空白数据\d-7年级1班\classManage.robot">
+<test id="s1-s1-s1-s1-t1" name="添加班级2 - tc002">
+<kw name="Add School Class" library="SchoolClassLib">
+<arguments>
+<arg>1</arg>
+<arg>2班</arg>
+<arg>60</arg>
+</arguments>
+<assign>
+<var>${ret1}</var>
+</assign>
+<msg timestamp="20190808 23:38:58.540" level="INFO">{'id': 193886, 'invitecode': '1938861277105', 'retcode': 0}</msg>
+<msg timestamp="20190808 23:38:58.540" level="INFO">${ret1} = {'invitecode': '1938861277105', 'retcode': 0, 'id': 193886}</msg>
+<status status="PASS" starttime="20190808 23:38:58.447" endtime="20190808 23:38:58.540"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>$ret1['retcode']==0</arg>
+</arguments>
+<status status="PASS" starttime="20190808 23:38:58.541" endtime="20190808 23:38:58.548"></status>
+</kw>
+<kw name="List School Class" library="SchoolClassLib">
+<arguments>
+<arg>1</arg>
+</arguments>
+<assign>
+<var>${ret2}</var>
+</assign>
+<msg timestamp="20190808 23:38:58.640" level="INFO">{ 'gradeid': 1,
+  'retcode': 0,
+  'retlist': [ { 'grade__name': '七年级',
+                 'id': 193882,
+                 'invitecode': '1938821176028',
+                 'name': '1班',
+                 'studentlimit': 60,
+                 'studentnumber': 0,
+                 'teacherlist': []},
+               { 'grade__name': '七年级',
+                 'id': 193886,
+                 'invitecode': '1938861277105',
+                 'name': '2班',
+                 'studentlimit': 60,
+                 'studentnumber': 0,
+                 'teacherlist': []}]}
+查询接口</msg>
+<msg timestamp="20190808 23:38:58.640" level="INFO">${ret2} = {'gradeid': 1, 'retlist': [{'name': '1班', 'grade__name': '七年级', 'invitecode': '1938821176028', 'studentlimit': 60, 'studentnumber': 0, 'id': 193882, 'teacherlist': []}, {'name': '2班', 'grade__name': '...</msg>
+<status status="PASS" starttime="20190808 23:38:58.549" endtime="20190808 23:38:58.640"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>$ret2['retlist']</arg>
+</arguments>
+<assign>
+<var>${retlist}</var>
+</assign>
+<msg timestamp="20190808 23:38:58.642" level="INFO">${retlist} = [{'name': '1班', 'grade__name': '七年级', 'invitecode': '1938821176028', 'studentlimit': 60, 'studentnumber': 0, 'id': 193882, 'teacherlist': []}, {'name': '2班', 'grade__name': '七年级', 'invitecode': '19388...</msg>
+<status status="PASS" starttime="20190808 23:38:58.641" endtime="20190808 23:38:58.642"></status>
+</kw>
+<kw name="Classlist Should Not Contain" library="SchoolClassLib">
+<arguments>
+<arg>${retlist}</arg>
+<arg>2班</arg>
+<arg>七年级</arg>
+<arg>&amp;{ret1}[invitecode]</arg>
+<arg>60</arg>
+<arg>0</arg>
+<arg>&amp;{ret1}[id]</arg>
+</arguments>
+<msg timestamp="20190808 23:38:58.644" level="INFO">{'grade__name': '七年级',
+ 'id': 193886,
+ 'invitecode': '1938861277105',
+ 'name': '2班',
+ 'studentlimit': 60,
+ 'studentnumber': 0,
+ 'teacherlist': []}
+'---------------'
+[{'grade__name': '七年级',
+  'id': 193882,
+  'invitecode': '1938821176028',
+  'name': '1班',
+  'studentlimit': 60,
+  'studentnumber': 0,
+  'teacherlist': []},
+ {'grade__name': '七年级',
+  'id': 193886,
+  'invitecode': '1938861277105',
+  'name': '2班',
+  'studentlimit': 60,
+  'studentnumber': 0,
+  'teacherlist': []}]</msg>
+<status status="PASS" starttime="20190808 23:38:58.643" endtime="20190808 23:38:58.645"></status>
+</kw>
+<kw name="Delete School Class" library="SchoolClassLib" type="teardown">
+<arguments>
+<arg>&amp;{ret1}[id]</arg>
+</arguments>
+<status status="PASS" starttime="20190808 23:38:58.646" endtime="20190808 23:38:58.740"></status>
+</kw>
+<status status="PASS" starttime="20190808 23:38:58.446" endtime="20190808 23:38:58.741" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-s1-t2" name="添加系统中存在的班级-tc003">
+<kw name="List School Class" library="SchoolClassLib">
+<assign>
+<var>${before}</var>
+</assign>
+<msg timestamp="20190808 23:38:58.843" level="INFO">{ 'gradeid': None,
+  'retcode': 0,
+  'retlist': [ { 'grade__name': '七年级',
+                 'id': 193882,
+                 'invitecode': '1938821176028',
+                 'name': '1班',
+                 'studentlimit': 60,
+                 'studentnumber': 0,
+                 'teacherlist': []}]}
+查询接口</msg>
+<msg timestamp="20190808 23:38:58.843" level="INFO">${before} = {'gradeid': None, 'retlist': [{'name': '1班', 'grade__name': '七年级', 'invitecode': '1938821176028', 'studentlimit': 60, 'studentnumber': 0, 'id': 193882, 'teacherlist': []}], 'retcode': 0}</msg>
+<status status="PASS" starttime="20190808 23:38:58.747" endtime="20190808 23:38:58.843"></status>
+</kw>
+<kw name="Add School Class" library="SchoolClassLib">
+<arguments>
+<arg>1</arg>
+<arg>1班</arg>
+<arg>60</arg>
+</arguments>
+<assign>
+<var>${ret1}</var>
+</assign>
+<msg timestamp="20190808 23:38:58.938" level="INFO">{'reason': 'Traceback (most recent call last):\n'
+           '  File '
+           '"/home/yjyx/yijiao_src/yijiao_main/services/datamodel/schoolclass/models.py", '
+           'line 542, in addClass\n'
+           '    school_class = '
+           'self._addClass(name,schoolid,gradeid,studentlimit)\n'
+           '  File '
+           '"/home/yjyx/yijiao_src/yijiao_main/services/datamodel/schoolclass/models.py", '
+           'line 531, in _addClass\n'
+           '    school_class.save()\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/models/base.py", '
+           'line 710, in save\n'
+           '    force_update=force_update, update_fields=update_fields)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/models/base.py", '
+           'line 738, in save_base\n'
+           '    updated = self._save_table(raw, cls, force_insert, '
+           'force_update, using, update_fields)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/models/base.py", '
+           'line 822, in _save_table\n'
+           '    result = self._do_insert(cls._base_manager, using, fields, '
+           'update_pk, raw)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/models/base.py", '
+           'line 861, in _do_insert\n'
+           '    using=using, raw=raw)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/models/manager.py", '
+           'line 127, in manager_method\n'
+           '    return getattr(self.get_queryset(), name)(*args, **kwargs)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/models/query.py", '
+           'line 920, in _insert\n'
+           '    return query.get_compiler(using=using).execute_sql(return_id)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", '
+           'line 974, in execute_sql\n'
+           '    cursor.execute(sql, params)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/backends/utils.py", '
+           'line 64, in execute\n'
+           '    return self.cursor.execute(sql, params)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/utils.py", line '
+           '97, in __exit__\n'
+           '    six.reraise(dj_exc_type, dj_exc_value, traceback)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/backends/utils.py", '
+           'line 64, in execute\n'
+           '    return self.cursor.execute(sql, params)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/django/db/backends/mysql/base.py", '
+           'line 124, in execute\n'
+           '    return self.cursor.execute(query, args)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/MySQLdb/cursors.py", line '
+           '205, in execute\n'
+           '    self.errorhandler(self, exc, value)\n'
+           '  File '
+           '"/usr/local/lib/python2.7/site-packages/MySQLdb/connections.py", '
+           'line 36, in defaulterrorhandler\n'
+           '    raise errorclass, errorvalue\n'
+           'IntegrityError: (1062, "Duplicate entry \'1\\xe7\\x8f\\xad-607-1\' '
+           'for key \'name\'")\n',
+ 'retcode': 1}</msg>
+<msg timestamp="20190808 23:38:58.938" level="INFO">${ret1} = {'reason': 'Traceback (most recent call last):\n  File "/home/yjyx/yijiao_src/yijiao_main/services/datamodel/schoolclass/models.py", line 542, in addClass\n    school_class = self._addClass(name,schoo...</msg>
+<status status="PASS" starttime="20190808 23:38:58.844" endtime="20190808 23:38:58.939"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>$ret1['retcode']==1</arg>
+</arguments>
+<status status="PASS" starttime="20190808 23:38:58.940" endtime="20190808 23:38:58.941"></status>
+</kw>
+<kw name="List School Class" library="SchoolClassLib">
+<assign>
+<var>${after}</var>
+</assign>
+<msg timestamp="20190808 23:38:59.041" level="INFO">{ 'gradeid': None,
+  'retcode': 0,
+  'retlist': [ { 'grade__name': '七年级',
+                 'id': 193882,
+                 'invitecode': '1938821176028',
+                 'name': '1班',
+                 'studentlimit': 60,
+                 'studentnumber': 0,
+                 'teacherlist': []}]}
+查询接口</msg>
+<msg timestamp="20190808 23:38:59.041" level="INFO">${after} = {'gradeid': None, 'retlist': [{'name': '1班', 'grade__name': '七年级', 'invitecode': '1938821176028', 'studentlimit': 60, 'studentnumber': 0, 'id': 193882, 'teacherlist': []}], 'retcode': 0}</msg>
+<status status="PASS" starttime="20190808 23:38:58.942" endtime="20190808 23:38:59.041"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>$before==$after</arg>
+</arguments>
+<status status="PASS" starttime="20190808 23:38:59.042" endtime="20190808 23:38:59.043"></status>
+</kw>
+<status status="PASS" starttime="20190808 23:38:58.745" endtime="20190808 23:38:59.044" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20190808 23:38:58.440" endtime="20190808 23:38:59.047"></status>
+</suite>
+<status status="PASS" starttime="20190808 23:38:58.267" endtime="20190808 23:38:59.053"></status>
+</suite>
+<status status="PASS" starttime="20190808 23:38:58.263" endtime="20190808 23:38:59.059"></status>
+</suite>
+<status status="PASS" starttime="20190808 23:38:58.232" endtime="20190808 23:38:59.065"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0">Critical Tests</stat>
+<stat pass="2" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" id="s1" name="Tc">Tc</stat>
+<stat pass="2" fail="0" id="s1-s1" name="D-空白数据">Tc.D-空白数据</stat>
+<stat pass="2" fail="0" id="s1-s1-s1" name="D-7年级1班">Tc.D-空白数据.D-7年级1班</stat>
+<stat pass="2" fail="0" id="s1-s1-s1-s1" name="classManage">Tc.D-空白数据.D-7年级1班.classManage</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -7,6 +7,7 @@ Library  pylib/SchoolClassLib.py
     should be true  $ret1['retcode']==0
 
 
+
 #列出班级，检验一下
     ${ret2}=  list school class   1
     #evaluate将response里的retlist里的第一个字典获取出来

@@ -69,17 +69,28 @@ class SchoolClassLib:
             raise Exception('cannot delete all school classes!!')
 
     #检查点
-    def classlist_should_contain(self,classlist,classname,gradename,invitecode,
-                                 studentlimit,studentnumber,classid):
-        item:{
-            'name':classname,
-            'grade__name':gradename,
-            'invitecode':invitecode,
-            'studentlimit':int(studentlimit),
-            'studentnumber':int(studentnumber),
-            'id':classid,
-            'teacherlist':[]
-        }
+    def classlist_should_not_contain(self,
+                                         classlist,
+                                         classname,
+                                         gradename,
+                                         invitecode,
+                                         studentlimit,
+                                         studentnumber,
+                                         classid
+                                         ):
+        item = {
+                "name": classname,
+                "grade__name": gradename,
+                "invitecode": invitecode,
+                "studentlimit": int(studentlimit),
+                "studentnumber": int(studentnumber),
+                "id": classid,
+                "teacherlist": []
+            }
+        pprint(item)
+        pprint('---------------')
+        pprint(classlist)
         #assert语法：第一个参数是正确值，第二个参数是否则抛出异常
-        assert item in classlist,'班级列表没有该班级'
+        if item not in classlist:
+            raise Exception('班级列表里面没有该班级')
 
