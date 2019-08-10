@@ -1,6 +1,7 @@
 import requests
 from pprint import pprint
 from config import g_vcode
+from robot.libraries.BuiltIn import BuiltIn
 #将类名和文件夹定义一样即可
 class SchoolClassLib:
     url = 'http://ci.ytesting.com/api/3school/school_classes'
@@ -29,7 +30,8 @@ class SchoolClassLib:
         return bodyDict
 
     #添加班级
-    def add_school_class(self,grade,name,studentlimit):
+    def add_school_class(self,grade,name,studentlimit,
+                         isSaveId=None):
         payload={
             'vcode':self.g_vcode,
             'action':'add',
@@ -40,6 +42,10 @@ class SchoolClassLib:
         response = requests.post(self.url,data=payload)
         bodyDict = response.json()
         pprint(bodyDict)
+
+        #如果isSaveId传进来值，就将id保存起来
+        if isSaveId!=None:
+            BuiltIn().set_global_variable('${%s}'%isSaveId,bodyDict['id'])
         return bodyDict
 
 
@@ -94,3 +100,16 @@ class SchoolClassLib:
         if item not in classlist:
             raise Exception('班级列表里面没有该班级')
 
+    def modifyClass(self,classid,name,studentlimit):
+        payload= {
+            'vcode':self.g_vcode,
+            'action':'modify',
+            'name':name,
+            'studentlimit':int(studentlimit)
+        }
+        url = '{}/{}'.format(self.url,classid)
+        response = requests.put(url,data=payload)
+        bodyDict = response.json()
+        pprint(bodyDict)
+        pprint('修改班级接口')
+        return bodyDict

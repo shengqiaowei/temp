@@ -1,7 +1,7 @@
 from pylib.SchoolClassLib import SchoolClassLib
 sc = SchoolClassLib()
 
-class c003:
+class c000003:
     def steps(self):
         print('''\n\n***** step 1 ****  添加 7年级1班 \n''')
 

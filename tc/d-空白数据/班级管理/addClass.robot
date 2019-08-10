@@ -2,7 +2,7 @@
 Library  pylib/SchoolClassLib.py
 
 *** Test Cases ***
-添加班级1-tc001
+添加班级1-tc000001
     ${ret1}=  add school class  1  语文一班  50
     should be true  $ret1['retcode']==0
 

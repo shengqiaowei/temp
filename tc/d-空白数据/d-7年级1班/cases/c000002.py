@@ -1,7 +1,7 @@
 from pylib.SchoolClassLib import SchoolClassLib
 sc = SchoolClassLib()
 
-class c002:
+class c000002:
     def steps(self):
         print('''\n\n***** step 1 ****  添加 7年级2班 \n''')
         self.ret1 = sc.add_school_class(1,'2班','60')
@@ -10,7 +10,7 @@ class c002:
         print('''\n\n***** step 2 ****  列出班级，检验一下\n''')
 
         ret2 = sc.list_school_class(1)
-        sc.classlist_should_contain(ret2['retlist'],
+        sc.classlist_should_not_contain(ret2['retlist'],
                                     '2班',
                                     '七年级',
                                     self.ret1['invitecode'],
