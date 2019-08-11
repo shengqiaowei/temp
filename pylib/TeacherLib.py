@@ -89,12 +89,13 @@ class TeacherLib:
 
         if classlist is not None:
             tempList = str(classlist).split(',')
-            newClassList = [{'id': oneid} for oneid in tempList if oneid != '']
+            newClassList = [{'id': int(oneid)} for oneid in tempList if oneid != '']
             payload['classlist']=json.dumps(newClassList)
 
         url = '{}/{}'.format(self.url,teacherid)
 
         response = requests.put(url,data=payload)
+        print(response.text)
         bodyDict = response.json()
         pprint(bodyDict)
         return bodyDict
