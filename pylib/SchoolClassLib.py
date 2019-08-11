@@ -93,13 +93,11 @@ class SchoolClassLib:
                 "id": classid,
                 "teacherlist": []
             }
-        pprint(item)
-        pprint('---------------')
-        pprint(classlist)
         #assert语法：第一个参数是正确值，第二个参数是否则抛出异常
         if item not in classlist:
             raise Exception('班级列表里面没有该班级')
 
+    #修改班级
     def modifyClass(self,classid,name,studentlimit):
         payload= {
             'vcode':self.g_vcode,
