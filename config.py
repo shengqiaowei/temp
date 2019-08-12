@@ -11,3 +11,7 @@ g_subject_science_id = 5
 
 #年级id
 g_grade_7_id = 1
+
+
+#老师登录地址
+g_teacher_login_url = 'http://ci.ytesting.com/teacher/login/login.html'

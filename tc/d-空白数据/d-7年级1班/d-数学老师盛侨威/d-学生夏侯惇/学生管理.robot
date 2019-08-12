@@ -4,6 +4,8 @@ Variables  config.py
 
 *** Test Cases ***
 添加学生2-tc002002
+    #利用sleep 1d 停止运行1天来创建学生账号和老师账号
+    #sleep  1d
     ${addRet}=  addStudent   xiahoudun2  夏侯惇2   ${g_grade_7_id}
     ...  ${suite_g7c1_classid}  13732327438
 
