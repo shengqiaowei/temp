@@ -69,7 +69,6 @@ class SchoolClassLib:
 
         #再次列出七年级所有班级
         rd = self.list_school_class()
-        pprint(rd,indent=2)
 
         if rd['retlist']!=[]:
             raise Exception('cannot delete all school classes!!')

@@ -1,8 +1,16 @@
 *** Settings ***
 Library  pylib/SchoolClassLib.py
-
+Library  pylib/TeacherLib.py
+Library  pylib/StudentLib.py
 *** Test Cases ***
 添加班级1-tc000001
+#    list school class
+#    listTeacher
+#    listStudent
+#    deleteStudent  23390
+#    delete school class  196423
+#    list school class
+
     ${ret1}=  add school class  1  语文一班  50
     should be true  $ret1['retcode']==0
 

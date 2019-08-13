@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.6.8 on win32)" generated="20190814 00:15:39.119" rpa="false">
+<suite id="s1" name="Tc" source="E:\temp\tc">
+<suite id="s1-s1" name="D-空白数据" source="E:\temp\tc\d-空白数据">
+<kw name="Run Keywords" library="BuiltIn" type="setup">
+<doc>Executes all the given keywords in a sequence.</doc>
+<arguments>
+<arg>deleteAllTeacher</arg>
+<arg>AND</arg>
+<arg>delete all school classes</arg>
+<arg>AND</arg>
+<arg>delete all student</arg>
+</arguments>
+<kw name="Delete All Teacher" library="TeacherLib">
+<msg timestamp="20190814 00:15:39.428" level="INFO">{'retcode': 0, 'retlist': []}
+{'retcode': 0, 'retlist': []}</msg>
+<status status="PASS" starttime="20190814 00:15:39.278" endtime="20190814 00:15:39.428"></status>
+</kw>
+<kw name="Delete All School Classes" library="SchoolClassLib">
+<msg timestamp="20190814 00:15:39.625" level="INFO">{'gradeid': None, 'retcode': 0, 'retlist': []}
+查询接口
+{'gradeid': None, 'retcode': 0, 'retlist': []}
+查询接口</msg>
+<status status="PASS" starttime="20190814 00:15:39.428" endtime="20190814 00:15:39.625"></status>
+</kw>
+<kw name="Delete All Student" library="StudentLib">
+<msg timestamp="20190814 00:15:39.823" level="INFO">{'retcode': 0, 'retlist': []}
+{'retcode': 0, 'retlist': []}</msg>
+<status status="PASS" starttime="20190814 00:15:39.625" endtime="20190814 00:15:39.823"></status>
+</kw>
+<status status="PASS" starttime="20190814 00:15:39.277" endtime="20190814 00:15:39.823"></status>
+</kw>
+<suite id="s1-s1-s1" name="D-7年级1班" source="E:\temp\tc\d-空白数据\d-7年级1班">
+<kw name="Add School Class" library="SchoolClassLib" type="setup">
+<arguments>
+<arg>1</arg>
+<arg>1班</arg>
+<arg>60</arg>
+<arg>suite_g7c1_classid</arg>
+</arguments>
+<msg timestamp="20190814 00:15:39.946" level="INFO">${suite_g7c1_classid} = 196446</msg>
+<msg timestamp="20190814 00:15:39.946" level="INFO">{'id': 196446, 'invitecode': '1964469337878', 'retcode': 0}</msg>
+<status status="PASS" starttime="20190814 00:15:39.828" endtime="20190814 00:15:39.946"></status>
+</kw>
+<suite id="s1-s1-s1-s1" name="D-学生遐想" source="E:\temp\tc\d-空白数据\d-7年级1班\d-学生遐想">
+<kw name="Add Student" library="StudentLib" type="setup">
+<arguments>
+<arg>xiaxiang</arg>
+<arg>遐想</arg>
+<arg>${g_grade_7_id}</arg>
+<arg>${suite_g7c1_classid}</arg>
+<arg>13732327438</arg>
+<arg>suite_student_id</arg>
+</arguments>
+<msg timestamp="20190814 00:15:40.051" level="INFO">${suite_student_id} = 23400</msg>
+<msg timestamp="20190814 00:15:40.051" level="INFO">{'id': 23400, 'retcode': 0}</msg>
+<status status="PASS" starttime="20190814 00:15:39.953" endtime="20190814 00:15:40.052"></status>
+</kw>
+<suite id="s1-s1-s1-s1-s1" name="老师操作" source="E:\temp\tc\d-空白数据\d-7年级1班\d-学生遐想\老师操作.robot">
+<kw name="Open Browser" library="WebOpLib" type="setup">
+<status status="PASS" starttime="20190814 00:15:40.153" endtime="20190814 00:15:43.628"></status>
+</kw>
+<test id="s1-s1-s1-s1-s1-t1" name="老师登录2-tc005002">
+<kw name="Add Teacher" library="TeacherLib">
+<arguments>
+<arg>shengqiaowei001</arg>
+<arg>sqw001</arg>
+<arg>${g_subject_math_id}</arg>
+<arg>${suite_g7c1_classid}</arg>
+<arg>13732327438</arg>
+<arg>123@qq.com</arg>
+<arg>331002199607064918</arg>
+</arguments>
+<assign>
+<var>${addRet}</var>
+</assign>
+<msg timestamp="20190814 00:15:43.723" level="INFO">{'id': 53916, 'retcode': 0}</msg>
+<msg timestamp="20190814 00:15:43.723" level="INFO">${addRet} = {'retcode': 0, 'id': 53916}</msg>
+<status status="PASS" starttime="20190814 00:15:43.631" endtime="20190814 00:15:43.723"></status>
+</kw>
+<kw name="Teacher Login" library="WebOpLib">
+<arguments>
+<arg>shengqiaowei001</arg>
+<arg>888888</arg>
+</arguments>
+<status status="PASS" starttime="20190814 00:15:43.723" endtime="20190814 00:15:48.528"></status>
+</kw>
+<kw name="Get Teacher Homepage Info" library="WebOpLib">
+<assign>
+<var>${teacherInformation}</var>
+</assign>
+<msg timestamp="20190814 00:15:50.684" level="INFO">['松勤学院00602', 'sqw001', '初中数学', '0', '0', '0']</msg>
+<msg timestamp="20190814 00:15:50.684" level="INFO">${teacherInformation} = ['松勤学院00602', 'sqw001', '初中数学', '0', '0', '0']</msg>
+<status status="PASS" starttime="20190814 00:15:48.528" endtime="20190814 00:15:50.684"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>$teacherInformation==['松勤学院00602', 'sqw001', '初中数学', '0', '0', '0']</arg>
+</arguments>
+<status status="PASS" starttime="20190814 00:15:50.685" endtime="20190814 00:15:50.692"></status>
+</kw>
+<kw name="Get Teacher Class Students Info" library="WebOpLib">
+<assign>
+<var>${classStudent}</var>
+</assign>
+<msg timestamp="20190814 00:15:54.899" level="INFO">{'七年级1班': ['遐想']}</msg>
+<msg timestamp="20190814 00:15:54.899" level="INFO">${classStudent} = {'七年级1班': ['遐想']}</msg>
+<status status="PASS" starttime="20190814 00:15:50.692" endtime="20190814 00:15:54.899"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>$classStudent=={'七年级1班':['遐想']}</arg>
+</arguments>
+<status status="PASS" starttime="20190814 00:15:54.900" endtime="20190814 00:15:54.900"></status>
+</kw>
+<kw name="Delete Teacher" library="TeacherLib" type="teardown">
+<arguments>
+<arg>&amp;{addRet}[id]</arg>
+</arguments>
+<msg timestamp="20190814 00:15:54.982" level="INFO">{'retcode': 0}</msg>
+<status status="PASS" starttime="20190814 00:15:54.901" endtime="20190814 00:15:54.982"></status>
+</kw>
+<status status="PASS" starttime="20190814 00:15:43.629" endtime="20190814 00:15:54.982" critical="yes"></status>
+</test>
+<kw name="Close Browser" library="WebOpLib" type="teardown">
+<status status="PASS" starttime="20190814 00:15:54.983" endtime="20190814 00:15:58.005"></status>
+</kw>
+<status status="PASS" starttime="20190814 00:15:40.052" endtime="20190814 00:15:58.005"></status>
+</suite>
+<kw name="Delete Student" library="StudentLib" type="teardown">
+<arguments>
+<arg>${suite_student_id}</arg>
+</arguments>
+<msg timestamp="20190814 00:15:58.083" level="INFO">{'retcode': 0}</msg>
+<status status="PASS" starttime="20190814 00:15:58.012" endtime="20190814 00:15:58.083"></status>
+</kw>
+<status status="PASS" starttime="20190814 00:15:39.946" endtime="20190814 00:15:58.083"></status>
+</suite>
+<kw name="Delete School Class" library="SchoolClassLib" type="teardown">
+<arguments>
+<arg>${suite_g7c1_classid}</arg>
+</arguments>
+<status status="PASS" starttime="20190814 00:15:58.090" endtime="20190814 00:15:58.156"></status>
+</kw>
+<status status="PASS" starttime="20190814 00:15:39.823" endtime="20190814 00:15:58.156"></status>
+</suite>
+<status status="PASS" starttime="20190814 00:15:39.152" endtime="20190814 00:15:58.162"></status>
+</suite>
+<status status="PASS" starttime="20190814 00:15:39.121" endtime="20190814 00:15:58.168"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Tc">Tc</stat>
+<stat pass="1" fail="0" id="s1-s1" name="D-空白数据">Tc.D-空白数据</stat>
+<stat pass="1" fail="0" id="s1-s1-s1" name="D-7年级1班">Tc.D-空白数据.D-7年级1班</stat>
+<stat pass="1" fail="0" id="s1-s1-s1-s1" name="D-学生遐想">Tc.D-空白数据.D-7年级1班.D-学生遐想</stat>
+<stat pass="1" fail="0" id="s1-s1-s1-s1-s1" name="老师操作">Tc.D-空白数据.D-7年级1班.D-学生遐想.老师操作</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

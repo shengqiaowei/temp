@@ -5,8 +5,9 @@ from pprint import pprint
 
 class WebOpLib:
 
-    #robot调用不同关键字时，都只打开一次浏览器操作
-    ROBOT_LIBRARY_SCOPE='GLOBAY'
+    #robot调用不同关键字时，都只打开一次浏览器操作,必须要加上
+
+    ROBOT_LIBRARY_SCOPE = 'GLOBAL'
 
     def open_browser(self):
         self.wd = webdriver.Chrome()
@@ -45,24 +46,23 @@ class WebOpLib:
     def get_teacher_class_students_info(self):
         self.wd.find_element_by_css_selector('.main-menu >ul> li:nth-of-type(4)').click()
 
-        self.wd.find_element_by_css_selector('a[href="#/student_group"] .menu-title').click()
+        self.wd.find_element_by_css_selector('a[href="#/student_group"] span').click()
 
         time.sleep(2)
 
         classStudentTab={}
 
         #获取班级的整个表格信息
-        classes= self.wd.find_elements_by_css_selector('div.panel-green')
+        classes= self.wd.find_elements_by_css_selector('div.panel')
 
         for cla in classes:
             #获取头部信息
-            gradeclass=cla.find_element_by_css_selector('div.panel-heading')
-
-            #返回的是一个webelement对象，所以需要.text
-            title = gradeclass.text.replace(' ','')
+            gradeclass=cla.find_element_by_css_selector('div.panel-heading').text.replace(' ','')
 
             #点击一下，展示表格里的学生信息
-            gradeclass.click()
+            cla.click()
+
+            time.sleep(2)
 
             self.wd.implicitly_wait(1)
             #获取所有学生信息
@@ -73,7 +73,7 @@ class WebOpLib:
             names = [ nameEle.text for nameEle in nameEles]
 
             #对空字典进行key和value赋值
-            classStudentTab[title]=[names]
+            classStudentTab[gradeclass]=names
 
         pprint(classStudentTab)
 

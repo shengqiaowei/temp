@@ -49,7 +49,7 @@ class TeacherLib:
             'action':'add',
             'username':username,
             'realname':realname,
-            'subjectid':int(subjectid),
+            'subjectid':subjectid,
             'classlist':json.dumps(newClassList),
             'phonenumber':phonenumber,
             'email':email,
