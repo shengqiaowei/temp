@@ -16,7 +16,7 @@ class WebOpLib:
     def close_browser(self):
         self.wd.quit()
 
-    #登录
+    #老师登录
     def teacher_login(self,username,password):
         self.wd.get(config.g_teacher_login_url)
         self.wd.find_element_by_id('username').send_keys(username)
@@ -79,11 +79,57 @@ class WebOpLib:
 
         return classStudentTab
 
+    #学生登录
+    def student_login(self,username,password):
+        self.wd.get(config.g_student_login_url)
+        self.wd.find_element_by_id('username').send_keys(username)
+        self.wd.find_element_by_id('password').send_keys(password)
+        self.wd.find_element_by_id('submit').click()
+
+        #校验主页
+        self.wd.find_element_by_css_selector('a[href="#/home"]>li')
+
+    #获取学生主页信息
+    def get_student_homepage_info(self):
+        #点击主页
+        self.wd.find_element_by_css_selector('a[href="#/home"]>li').click()
+
+        #页面动态加载，先等待2s
+        time.sleep(2)
+
+        #获取学生主页信息
+        eles = self.wd.find_elements_by_css_selector('.row .ng-binding')
+
+        #将每个字段信息通过文本的方式打印出来
+        eleText = [ele.text for ele in eles]
+
+        #删除注册码这个字段信息
+        eleText.pop(2)
+        pprint(eleText)
+        return  eleText
+
+    #获取错题库信息
+    def student_wrong(self):
+        self.wd.find_element_by_css_selector('div.main-menu a[href="#/yj_wrong_questions"] li'
+                                             ).click()
+        time.sleep(1)
+        wrongInfo = self.wd.find_element_by_css_selector('#page-wrapper').text
+        pprint(wrongInfo)
+        return wrongInfo
+
+
+
 if __name__=='__main__':
     webop = WebOpLib()
     webop.open_browser()
-    webop.teacher_login('shengqiaowei',888888)
-    webop.get_teacher_homepage_info()
-    webop.get_teacher_class_students_info()
+
+    # webop.teacher_login('shengqiaowei',888888)
+    # webop.get_teacher_homepage_info()
+    # webop.get_teacher_class_students_info()
+    #webop.close_browser()
+
+    webop.student_login('shengqiaowei100',888888)
+    webop.get_student_homepage_info()
+    webop.student_wrong()
     webop.close_browser()
 

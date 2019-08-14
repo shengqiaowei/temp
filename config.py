@@ -15,3 +15,6 @@ g_grade_7_id = 1
 
 #老师登录地址
 g_teacher_login_url = 'http://ci.ytesting.com/teacher/login/login.html'
+
+#学生登录地址
+g_student_login_url = 'http://ci.ytesting.com/student/login/login.html'
