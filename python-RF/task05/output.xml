@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.6.8 on win32)" generated="20190822 23:51:08.394" rpa="false">
+<suite id="s1" name="Tc" source="E:\temp\python-RF\task05\tc">
+<kw name="Open Browser1" library="CourseManage" type="setup">
+<status status="PASS" starttime="20190822 23:51:08.497" endtime="20190822 23:51:11.947"></status>
+</kw>
+<suite id="s1-s1" name="课程管理" source="E:\temp\python-RF\task05\tc\课程管理.robot">
+<test id="s1-s1-t1" name="添加课程-tc001">
+<kw name="Login" library="CourseManage">
+<arguments>
+<arg>auto</arg>
+<arg>sdfsdfsdf</arg>
+</arguments>
+<status status="PASS" starttime="20190822 23:51:11.957" endtime="20190822 23:51:13.139"></status>
+</kw>
+<kw name="Delete Course" library="CourseManage">
+<msg timestamp="20190822 23:51:18.799" level="INFO">[&lt;selenium.webdriver.remote.webelement.WebElement (session="07d5e55aa789a961759a641c239a5e7a", element="0.16992983221090707-2")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="07d5e55aa789a961759a641c239a5e7a", element="0.16992983221090707-3")&gt;]
+[&lt;selenium.webdriver.remote.webelement.WebElement (session="07d5e55aa789a961759a641c239a5e7a", element="0.16992983221090707-5")&gt;]
+[]</msg>
+<status status="PASS" starttime="20190822 23:51:13.140" endtime="20190822 23:51:18.799"></status>
+</kw>
+<kw name="Add Course" library="CourseManage">
+<arguments>
+<arg>语文课001</arg>
+<arg>语文课描述001</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20190822 23:51:18.800" endtime="20190822 23:51:22.267"></status>
+</kw>
+<kw name="Add Course" library="CourseManage">
+<arguments>
+<arg>语文课002</arg>
+<arg>语文课描述002</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20190822 23:51:22.268" endtime="20190822 23:51:25.704"></status>
+</kw>
+<kw name="List Course" library="CourseManage">
+<msg timestamp="20190822 23:51:25.786" level="INFO">1   语文课002   2   语文课001</msg>
+<status status="PASS" starttime="20190822 23:51:25.704" endtime="20190822 23:51:25.786"></status>
+</kw>
+<status status="PASS" starttime="20190822 23:51:11.956" endtime="20190822 23:51:25.787" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20190822 23:51:11.947" endtime="20190822 23:51:25.788"></status>
+</suite>
+<kw name="Close Browser1" library="CourseManage" type="teardown">
+<status status="PASS" starttime="20190822 23:51:25.790" endtime="20190822 23:51:26.914"></status>
+</kw>
+<status status="PASS" starttime="20190822 23:51:08.396" endtime="20190822 23:51:26.914"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Tc">Tc</stat>
+<stat pass="1" fail="0" id="s1-s1" name="课程管理">Tc.课程管理</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
