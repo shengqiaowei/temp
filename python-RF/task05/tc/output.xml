@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.6.8 on win32)" generated="20190824 16:59:06.238" rpa="false">
+<suite id="s1" name="RF测试标签" source="E:\temp\python-RF\task05\tc\RF测试标签">
+<suite id="s1-s1" name="RF登录标签" source="E:\temp\python-RF\task05\tc\RF测试标签\RF登录标签">
+<suite id="s1-s1-s1" name="Test" source="E:\temp\python-RF\task05\tc\RF测试标签\RF登录标签\test.robot">
+<test id="s1-s1-s1-t1" name="测试用例-10001">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>用例10001主体部分</arg>
+</arguments>
+<status status="PASS" starttime="20190824 16:59:06.281" endtime="20190824 16:59:06.283"></status>
+</kw>
+<tags>
+<tag>10001</tag>
+<tag>login</tag>
+<tag>test</tag>
+<tag>冒烟测试</tag>
+<tag>正确密码</tag>
+<tag>正确用户名</tag>
+</tags>
+<status status="PASS" starttime="20190824 16:59:06.280" endtime="20190824 16:59:06.284" critical="no"></status>
+</test>
+<test id="s1-s1-s1-t2" name="测试用例-10002">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>用例10002主体部分</arg>
+</arguments>
+<status status="PASS" starttime="20190824 16:59:06.288" endtime="20190824 16:59:06.289"></status>
+</kw>
+<tags>
+<tag>10002</tag>
+<tag>login</tag>
+<tag>test</tag>
+<tag>冒烟测试</tag>
+<tag>正确密码</tag>
+<tag>正确用户名</tag>
+</tags>
+<status status="PASS" starttime="20190824 16:59:06.287" endtime="20190824 16:59:06.290" critical="no"></status>
+</test>
+<test id="s1-s1-s1-t3" name="测试用例-10003">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>用例10003主体部分</arg>
+</arguments>
+<status status="PASS" starttime="20190824 16:59:06.294" endtime="20190824 16:59:06.295"></status>
+</kw>
+<tags>
+<tag>10003</tag>
+<tag>login</tag>
+<tag>test</tag>
+<tag>冒烟测试</tag>
+<tag>正确用户名</tag>
+<tag>错误密码</tag>
+</tags>
+<status status="PASS" starttime="20190824 16:59:06.293" endtime="20190824 16:59:06.296" critical="no"></status>
+</test>
+<test id="s1-s1-s1-t4" name="测试用例-10004">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>用例10004主体部分</arg>
+</arguments>
+<status status="PASS" starttime="20190824 16:59:06.300" endtime="20190824 16:59:06.302"></status>
+</kw>
+<kw name="Fail" library="BuiltIn">
+<doc>Fails the test with the given message and optionally alters its tags.</doc>
+<msg timestamp="20190824 16:59:06.303" level="FAIL">AssertionError</msg>
+<status status="FAIL" starttime="20190824 16:59:06.302" endtime="20190824 16:59:06.303"></status>
+</kw>
+<tags>
+<tag>login</tag>
+<tag>notag</tag>
+<tag>test</tag>
+<tag>冒烟测试</tag>
+</tags>
+<status status="FAIL" starttime="20190824 16:59:06.299" endtime="20190824 16:59:06.303" critical="no">AssertionError</status>
+</test>
+<status status="PASS" starttime="20190824 16:59:06.274" endtime="20190824 16:59:06.306"></status>
+</suite>
+<status status="PASS" starttime="20190824 16:59:06.270" endtime="20190824 16:59:06.313"></status>
+</suite>
+<suite id="s1-s2" name="RF老师标签" source="E:\temp\python-RF\task05\tc\RF测试标签\RF老师标签">
+<suite id="s1-s2-s1" name="老师标签" source="E:\temp\python-RF\task05\tc\RF测试标签\RF老师标签\老师标签.robot">
+<test id="s1-s2-s1-t1" name="老师标签-20001">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>老师标签主体部分</arg>
+</arguments>
+<status status="PASS" starttime="20190824 16:59:06.328" endtime="20190824 16:59:06.330"></status>
+</kw>
+<tags>
+<tag>login</tag>
+<tag>teacher</tag>
+<tag>test</tag>
+</tags>
+<status status="PASS" starttime="20190824 16:59:06.327" endtime="20190824 16:59:06.331" critical="no"></status>
+</test>
+<status status="PASS" starttime="20190824 16:59:06.322" endtime="20190824 16:59:06.334"></status>
+</suite>
+<status status="PASS" starttime="20190824 16:59:06.318" endtime="20190824 16:59:06.340"></status>
+</suite>
+<status status="PASS" starttime="20190824 16:59:06.240" endtime="20190824 16:59:06.346"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="0">Critical Tests</stat>
+<stat pass="4" fail="1">All Tests</stat>
+</total>
+<tag>
+<stat pass="4" fail="1" info="non-critical">login</stat>
+<stat pass="1" fail="0">10001</stat>
+<stat pass="1" fail="0">10002</stat>
+<stat pass="1" fail="0">10003</stat>
+<stat pass="0" fail="1">notag</stat>
+<stat pass="1" fail="0">teacher</stat>
+<stat pass="4" fail="1">test</stat>
+<stat pass="3" fail="1">冒烟测试</stat>
+<stat pass="2" fail="0">正确密码</stat>
+<stat pass="3" fail="0">正确用户名</stat>
+<stat pass="1" fail="0">错误密码</stat>
+</tag>
+<suite>
+<stat pass="4" fail="1" id="s1" name="RF测试标签">RF测试标签</stat>
+<stat pass="3" fail="1" id="s1-s1" name="RF登录标签">RF测试标签.RF登录标签</stat>
+<stat pass="3" fail="1" id="s1-s1-s1" name="Test">RF测试标签.RF登录标签.Test</stat>
+<stat pass="1" fail="0" id="s1-s2" name="RF老师标签">RF测试标签.RF老师标签</stat>
+<stat pass="1" fail="0" id="s1-s2-s1" name="老师标签">RF测试标签.RF老师标签.老师标签</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
