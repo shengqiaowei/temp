@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.1 (Python 3.6.8 on win32)" generated="20190825 23:43:10.770" rpa="false">
+<robot generator="Robot 3.1.1 (Python 3.6.8 on win32)" generated="20190826 22:37:03.983" rpa="false">
 <suite id="s1" name="Tc" source="E:\temp\python-RF\task06\tc">
 <suite id="s1-s1" name="Web测试" source="E:\temp\python-RF\task06\tc\web测试">
 <kw name="Run Keywords" library="BuiltIn" type="setup">
@@ -12,24 +12,36 @@
 <arg>sdfsdfsdf</arg>
 </arguments>
 <kw name="Open Browser1" library="WebOpAdmin">
-<status status="PASS" starttime="20190825 23:43:10.888" endtime="20190825 23:43:13.780"></status>
+<status status="PASS" starttime="20190826 22:37:04.103" endtime="20190826 22:37:07.479"></status>
 </kw>
 <kw name="Login" library="WebOpAdmin">
 <arguments>
 <arg>auto</arg>
 <arg>sdfsdfsdf</arg>
 </arguments>
-<status status="PASS" starttime="20190825 23:43:13.780" endtime="20190825 23:43:15.062"></status>
+<status status="PASS" starttime="20190826 22:37:07.479" endtime="20190826 22:37:08.732"></status>
 </kw>
-<status status="PASS" starttime="20190825 23:43:10.888" endtime="20190825 23:43:15.062"></status>
+<status status="PASS" starttime="20190826 22:37:04.103" endtime="20190826 22:37:08.732"></status>
 </kw>
-<suite id="s1-s1-s1" name="培训班管理" source="E:\temp\python-RF\task06\tc\web测试\培训班管理.robot">
-<test id="s1-s1-s1-t1" name="添加培训班-tc003">
-<kw name="Delete Course" library="WebOpAdmin" type="setup">
-<msg timestamp="20190825 23:43:20.753" level="INFO">[&lt;selenium.webdriver.remote.webelement.WebElement (session="d7bec36735175ddfab7227c742051db0", element="0.39084857776514537-2")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="d7bec36735175ddfab7227c742051db0", element="0.39084857776514537-3")&gt;]
-[&lt;selenium.webdriver.remote.webelement.WebElement (session="d7bec36735175ddfab7227c742051db0", element="0.39084857776514537-5")&gt;]
+<suite id="s1-s1-s1" name="培训班管理期" source="E:\temp\python-RF\task06\tc\web测试\培训班管理期.robot">
+<test id="s1-s1-s1-t1" name="添加培训班期-tc004">
+<kw name="Run Keywords" library="BuiltIn" type="setup">
+<doc>Executes all the given keywords in a sequence.</doc>
+<arguments>
+<arg>delete training course qi</arg>
+<arg>AND</arg>
+<arg>delete course</arg>
+</arguments>
+<kw name="Delete Training Course Qi" library="WebOpAdmin">
+<msg timestamp="20190826 22:37:11.845" level="INFO">[]</msg>
+<status status="PASS" starttime="20190826 22:37:08.738" endtime="20190826 22:37:11.845"></status>
+</kw>
+<kw name="Delete Course" library="WebOpAdmin">
+<msg timestamp="20190826 22:37:16.241" level="INFO">[&lt;selenium.webdriver.remote.webelement.WebElement (session="0d1014636739d04dc42b4205f30bfa81", element="0.09219578994451338-3")&gt;]
 []</msg>
-<status status="PASS" starttime="20190825 23:43:15.067" endtime="20190825 23:43:20.753"></status>
+<status status="PASS" starttime="20190826 22:37:11.845" endtime="20190826 22:37:16.241"></status>
+</kw>
+<status status="PASS" starttime="20190826 22:37:08.738" endtime="20190826 22:37:16.241"></status>
 </kw>
 <kw name="Add Course" library="WebOpAdmin">
 <arguments>
@@ -37,68 +49,68 @@
 <arg>初中语文描述</arg>
 <arg>1</arg>
 </arguments>
-<status status="PASS" starttime="20190825 23:43:20.754" endtime="20190825 23:43:25.143"></status>
+<status status="PASS" starttime="20190826 22:37:16.242" endtime="20190826 22:37:20.700"></status>
 </kw>
-<kw name="Add Course" library="WebOpAdmin">
-<arguments>
-<arg>初中数学</arg>
-<arg>初中数学描述</arg>
-<arg>2</arg>
-</arguments>
-<status status="PASS" starttime="20190825 23:43:25.143" endtime="20190825 23:43:29.512"></status>
+<kw name="List Course" library="WebOpAdmin">
+<assign>
+<var>${listCourse}</var>
+</assign>
+<msg timestamp="20190826 22:37:20.727" level="INFO">${listCourse} = ['初中语文']</msg>
+<status status="PASS" starttime="20190826 22:37:20.701" endtime="20190826 22:37:20.727"></status>
 </kw>
 <kw name="Delete Training Course" library="WebOpAdmin">
-<msg timestamp="20190825 23:43:32.600" level="INFO">[]</msg>
-<status status="PASS" starttime="20190825 23:43:29.512" endtime="20190825 23:43:32.600"></status>
+<msg timestamp="20190826 22:37:25.153" level="INFO">[&lt;selenium.webdriver.remote.webelement.WebElement (session="0d1014636739d04dc42b4205f30bfa81", element="0.09219578994451338-13")&gt;]
+[]</msg>
+<status status="PASS" starttime="20190826 22:37:20.728" endtime="20190826 22:37:25.153"></status>
 </kw>
 <kw name="Training Course" library="WebOpAdmin">
 <arguments>
-<arg>初中班1期</arg>
+<arg>初中班</arg>
 <arg>初中班1期描述</arg>
 <arg>1</arg>
 <arg>初中语文</arg>
 </arguments>
-<status status="PASS" starttime="20190825 23:43:32.601" endtime="20190825 23:43:39.071"></status>
+<status status="PASS" starttime="20190826 22:37:25.154" endtime="20190826 22:37:31.642"></status>
 </kw>
-<kw name="Training Course" library="WebOpAdmin">
+<kw name="Add Training Course Qi" library="WebOpAdmin">
 <arguments>
 <arg>初中班1期</arg>
 <arg>初中班1期描述</arg>
-<arg>1</arg>
-<arg>初中数学</arg>
+<arg>2</arg>
+<arg>初中班</arg>
 </arguments>
-<status status="PASS" starttime="20190825 23:43:39.072" endtime="20190825 23:43:45.458"></status>
+<status status="PASS" starttime="20190826 22:37:31.643" endtime="20190826 22:37:39.194"></status>
 </kw>
-<kw name="List Training Course" library="WebOpAdmin">
+<kw name="List Training Course Qi" library="WebOpAdmin">
 <assign>
 <var>${listTraining}</var>
 </assign>
-<msg timestamp="20190825 23:43:45.497" level="INFO">${listTraining} = ['初中语文', '初中数学']</msg>
-<status status="PASS" starttime="20190825 23:43:45.459" endtime="20190825 23:43:45.497"></status>
+<msg timestamp="20190826 22:37:39.254" level="INFO">初中班1期</msg>
+<msg timestamp="20190826 22:37:39.255" level="INFO">${listTraining} = ['初中班1期']</msg>
+<status status="PASS" starttime="20190826 22:37:39.194" endtime="20190826 22:37:39.255"></status>
 </kw>
 <kw name="Should Be True" library="BuiltIn">
 <doc>Fails if the given condition is not true.</doc>
 <arguments>
-<arg>$listTraining==['初中语文', '初中数学']</arg>
+<arg>$listTraining==['初中班1期']</arg>
 </arguments>
-<status status="PASS" starttime="20190825 23:43:45.498" endtime="20190825 23:43:45.505"></status>
+<status status="PASS" starttime="20190826 22:37:39.255" endtime="20190826 22:37:39.264"></status>
 </kw>
-<kw name="Delete Training Course" library="WebOpAdmin" type="teardown">
-<msg timestamp="20190825 23:43:51.109" level="INFO">[&lt;selenium.webdriver.remote.webelement.WebElement (session="d7bec36735175ddfab7227c742051db0", element="0.39084857776514537-30")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (session="d7bec36735175ddfab7227c742051db0", element="0.39084857776514537-31")&gt;]
-[&lt;selenium.webdriver.remote.webelement.WebElement (session="d7bec36735175ddfab7227c742051db0", element="0.39084857776514537-33")&gt;]
+<kw name="Delete Training Course Qi" library="WebOpAdmin" type="teardown">
+<msg timestamp="20190826 22:37:43.702" level="INFO">[&lt;selenium.webdriver.remote.webelement.WebElement (session="0d1014636739d04dc42b4205f30bfa81", element="0.09219578994451338-31")&gt;]
 []</msg>
-<status status="PASS" starttime="20190825 23:43:45.506" endtime="20190825 23:43:51.109"></status>
+<status status="PASS" starttime="20190826 22:37:39.264" endtime="20190826 22:37:43.702"></status>
 </kw>
-<status status="PASS" starttime="20190825 23:43:15.066" endtime="20190825 23:43:51.110" critical="yes"></status>
+<status status="PASS" starttime="20190826 22:37:08.736" endtime="20190826 22:37:43.703" critical="yes"></status>
 </test>
-<status status="PASS" starttime="20190825 23:43:15.062" endtime="20190825 23:43:51.111"></status>
+<status status="PASS" starttime="20190826 22:37:08.732" endtime="20190826 22:37:43.704"></status>
 </suite>
 <kw name="Close Browser1" library="WebOpAdmin" type="teardown">
-<status status="PASS" starttime="20190825 23:43:51.114" endtime="20190825 23:43:52.253"></status>
+<status status="PASS" starttime="20190826 22:37:43.706" endtime="20190826 22:37:44.852"></status>
 </kw>
-<status status="PASS" starttime="20190825 23:43:10.801" endtime="20190825 23:43:52.253"></status>
+<status status="PASS" starttime="20190826 22:37:04.015" endtime="20190826 22:37:44.852"></status>
 </suite>
-<status status="PASS" starttime="20190825 23:43:10.773" endtime="20190825 23:43:52.259"></status>
+<status status="PASS" starttime="20190826 22:37:03.985" endtime="20190826 22:37:44.856"></status>
 </suite>
 <statistics>
 <total>
@@ -110,7 +122,7 @@
 <suite>
 <stat pass="1" fail="0" id="s1" name="Tc">Tc</stat>
 <stat pass="1" fail="0" id="s1-s1" name="Web测试">Tc.Web测试</stat>
-<stat pass="1" fail="0" id="s1-s1-s1" name="培训班管理">Tc.Web测试.培训班管理</stat>
+<stat pass="1" fail="0" id="s1-s1-s1" name="培训班管理期">Tc.Web测试.培训班管理期</stat>
 </suite>
 </statistics>
 <errors>

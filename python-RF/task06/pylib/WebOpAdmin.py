@@ -61,7 +61,7 @@ class  WebOpAdmin:
 
     #列出课程,检查使用
     def listCourse(self):
-        self.driver.find_element_by_css_selector('ul.nav a[ui-sref=course]').click()
+        #self.driver.find_element_by_css_selector('ul.nav a[ui-sref=course]').click()
 
         eles = self.driver.find_elements_by_css_selector('tr>td:nth-child(2)')
 
@@ -207,6 +207,70 @@ class  WebOpAdmin:
         eles = self.driver.find_elements_by_css_selector('tr:nth-child(2) > td:nth-child(4) span')
         return [ele.text for ele in eles]
 
+    #删除所有培训班期
+    def delete_training_course_qi(self):
+        #点击培训班期标签
+        self.driver.find_element_by_css_selector('a[ui-sref="traininggrade"]').click()
+        time.sleep(1)
+        self.driver.implicitly_wait(2)
+        while True:
+            #点击删除按钮,elements返回的是一个列表,webdriver对象
+            deleteButton = self.driver.find_elements_by_css_selector('button[ng-click="delOne(one)"]')
+            print(deleteButton)
+            #如果是一个空列表,就跳出循环
+            if deleteButton==[]:
+                break
+            #每次循环都从第一行删除按钮进行点击
+            deleteButton[0].click()
+            #点击确认按钮
+            self.driver.find_element_by_css_selector('button.btn-primary').click()
+            time.sleep(1)
+        self.driver.implicitly_wait(10)
+
+    def EnterTab(self, name):
+        tabLinkCss = u'ul.nav a[ui-sref={}]'.format(name)
+        self.driver.find_element_by_css_selector(tabLinkCss).click()
+        time.sleep(0.5)
+
+    #列出培训班期,检查用
+    def list_training_course_qi(self):
+
+        #self.driver.find_element_by_css_selector('a[ui-sref="traininggrade"]').click()
+        eles = self.driver.find_elements_by_css_selector('tr>td:nth-child(2)')
+        for ele in eles:
+            print (ele.text)
+
+        return  [ele.text for ele in eles]
+
+    #添加培训班期
+    def add_training_course_qi(self,name,desc,display_idx,lesson):
+        # 点击培训班期标签
+        self.driver.find_element_by_css_selector('a[ui-sref="traininggrade"]').click()
+        time.sleep(1)
+        # 点击创建培训班期
+        self.driver.find_element_by_css_selector('button[ng-click="showAddOne=true"]').click()
+        time.sleep(1)
+
+        self.driver.find_element_by_css_selector('input[ng-model="addEditData.name"]').send_keys(name)
+        time.sleep(1)
+        self.driver.find_element_by_css_selector('textarea[ng-model="addEditData.desc"]').send_keys(desc)
+        time.sleep(1)
+        ele = self.driver.find_element_by_css_selector('input[ng-model="addEditData.display_idx"]')
+        ele.clear()
+        ele.send_keys(display_idx)
+
+        time.sleep(1)
+        select = Select(self.driver.find_element_by_css_selector('select[ng-options*="training.id"]'))
+        select.select_by_visible_text(lesson)
+
+        # 点击确定
+        self.driver.find_element_by_css_selector('button[ng-click^=addOne]').click()
+        time.sleep(2)
+
+        # 增加一个培训班期后，将页面刷新一次
+        self.driver.find_element_by_css_selector('ul.nav a[ui-sref=course]').click()
+        self.driver.find_element_by_css_selector('a[ui-sref="traininggrade"]').click()
+
 
 if __name__=='__main__':
 #     cm = WebOpAdmin()
@@ -251,5 +315,20 @@ if __name__=='__main__':
     #     print('代码错误')
     # finally:
     #     wa.close_browser1()
-        pass
+
+    wa = WebOpAdmin()
+    try:
+        wa.open_browser1()
+        wa.login('auto','sdfsdfsdf')
+        wa.delete_training_course_qi()
+        wa.delete_course()
+        wa.add_course('初中语文','初中语文描述',1)
+        wa.delete_training_course()
+        wa.training_course('初中班','初中班1期描述',1,'初中语文')
+        wa.add_training_course_qi('初中班1期','初中班1期描述',2,'初中班')
+        wa.list_training_course_qi()
+    except:
+        print('代码错误')
+    finally:
+        wa.close_browser1()
 
