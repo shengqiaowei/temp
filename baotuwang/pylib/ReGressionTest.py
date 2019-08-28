@@ -296,6 +296,41 @@ class ReGressionTest:
         time.sleep(3)
         self.driver.switch_to.window(spCurrent)
 
+    #全站搜索
+    def search(self,info):
+        #输入关键词
+        self.driver.find_element_by_id('so-kw').send_keys(info)
+
+        #点击查询
+        self.driver.find_element_by_css_selector('a.but-search').click()
+        time.sleep(1)
+
+        #循环点击所有分类标签
+        for i in range(1,20):
+            sum = 1
+            sum+=i
+            print(sum)
+            if sum<=17:
+                self.driver.find_element_by_css_selector('div.right-wrap :nth-child(%s)' % sum).click()
+                time.sleep(1)
+                # #点击下一页
+                # self.driver.find_element_by_css_selector('a.next').click()
+                # time.sleep(1)
+                #
+                # #点击第三页
+                # self.driver.find_element_by_css_selector('div.pagelist :nth-child(4)').click()
+                # time.sleep(1)
+
+                #点击x号
+                self.driver.find_element_by_css_selector('div.pb-mask').click()
+                time.sleep(1)
+            else:
+                break
+
+
+
+
+
 if __name__ == '__main__':
     rt = ReGressionTest()
     try:
@@ -306,6 +341,7 @@ if __name__ == '__main__':
         #rt.ui_download('全套界面')
         #rt.ds_download('双十一')
         #rt.dmt_download('年会')
+        rt.search('中秋节')
     except:
         print('代码错误')
     finally:
