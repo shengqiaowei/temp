@@ -3,6 +3,10 @@ import time
 
 
 class ReGressionTest:
+    # robot调用不同关键字时，都只打开一次浏览器操作,必须要加上
+
+    ROBOT_LIBRARY_SCOPE = 'GLOBAL'
+
     url = 'https://www.ibaotu.com'
 
     def open_browser(self):
@@ -10,7 +14,7 @@ class ReGressionTest:
         self.driver.get(self.url)
         self.driver.maximize_window()
         time.sleep(5)
-        self.driver.implicitly_wait(10)
+        #self.driver.implicitly_wait(10)
 
     def close_browser(self):
         self.driver.quit()
@@ -38,6 +42,9 @@ class ReGressionTest:
         #点击查询
         self.driver.find_element_by_css_selector('#ggtb-search-btn .icon-search').click()
         time.sleep(2)
+
+        #滚动下拉条
+        self.scroll_bar()
 
         #点击下载
         self.driver.find_element_by_css_selector('.gradient-ver-bw .gradient-hor-og').click()
@@ -72,6 +79,9 @@ class ReGressionTest:
         self.driver.find_element_by_css_selector('#ggtb-search-btn .icon-search').click()
         time.sleep(2)
 
+        #下拉滚动条
+        self.scroll_bar()
+
         #点击下载
         self.driver.find_element_by_css_selector('.gradient-ver-bw .gradient-hor-og').click()
         time.sleep(1)
@@ -101,6 +111,9 @@ class ReGressionTest:
         #点击 黑体 标签
         self.driver.find_element_by_css_selector('a[class="classifys "]').click()
         time.sleep(1)
+
+        #下拉滚动条
+        self.scroll_bar()
 
         #点击立即下载
         self.driver.find_element_by_css_selector('a[data-font-id="a93e6ced39a04f1d9bb2ad0220ceb3ec"]').click()
@@ -144,6 +157,9 @@ class ReGressionTest:
         self.driver.find_element_by_css_selector('#ggtb-search-btn .icon-search').click()
         time.sleep(2)
 
+        #下拉滚动条
+        self.scroll_bar()
+
         #点击下载
         self.driver.find_element_by_css_selector('.gradient-ver-bw .gradient-hor-og').click()
         time.sleep(1)
@@ -177,6 +193,9 @@ class ReGressionTest:
         self.driver.find_element_by_css_selector('#ggtb-search-btn .icon-search').click()
         time.sleep(2)
 
+        #下拉滚动条
+        self.scroll_bar()
+
         #点击下载
         self.driver.find_element_by_css_selector('.gradient-ver-bw .gradient-hor-og').click()
         time.sleep(1)
@@ -207,6 +226,9 @@ class ReGressionTest:
         #点击查询视频
         self.driver.find_element_by_css_selector('#ggtb-search-btn .icon-sousuo1').click()
         time.sleep(2)
+
+        #下拉滚动条
+        self.scroll_bar()
 
         #获取查询后的句柄
         spCurrent = self.driver.current_window_handle
@@ -296,6 +318,16 @@ class ReGressionTest:
         time.sleep(3)
         self.driver.switch_to.window(spCurrent)
 
+    #翻页
+    #点击下一页
+    def Page(self):
+        self.driver.find_element_by_css_selector('a.next').click()
+        time.sleep(1)
+        #点击第三页
+        self.driver.find_element_by_css_selector('div.pagelist :nth-child(4)').click()
+        time.sleep(1)
+
+
     #全站搜索
     def search(self,info):
         #输入关键词
@@ -313,13 +345,6 @@ class ReGressionTest:
             if sum<=17:
                 self.driver.find_element_by_css_selector('div.right-wrap :nth-child(%s)' % sum).click()
                 time.sleep(1)
-                # #点击下一页
-                # self.driver.find_element_by_css_selector('a.next').click()
-                # time.sleep(1)
-                #
-                # #点击第三页
-                # self.driver.find_element_by_css_selector('div.pagelist :nth-child(4)').click()
-                # time.sleep(1)
 
                 #点击x号
                 self.driver.find_element_by_css_selector('div.pb-mask').click()
@@ -345,6 +370,9 @@ class ReGressionTest:
         #点击查询
         self.driver.find_element_by_id('ggtb-search-btn').click()
         time.sleep(2)
+
+        #下拉滚动条
+        self.scroll_bar()
 
         #点击下载
         self.driver.find_element_by_css_selector('.gradient-ver-bw .gradient-hor-og').click()
@@ -398,6 +426,9 @@ class ReGressionTest:
         self.driver.find_element_by_id('ggtb-search-btn').click()
         time.sleep(2)
 
+        #下拉滚动条
+        self.scroll_bar()
+
         #点击下载
         self.driver.find_element_by_css_selector('.gradient-ver-bw .gradient-hor-og').click()
         time.sleep(1)
@@ -418,21 +449,172 @@ class ReGressionTest:
         # 点击左上角包图网，切换回首页句柄
         self.driver.find_element_by_css_selector('.head-wrap >a[href="//ibaotu.com"]').click()
 
+    #excel:查询、下载
+    def excel_download(self,info):
 
+        #点击办公文档
+        self.driver.find_element_by_css_selector('a[data-spot="办公文档"]').click()
+        time.sleep(1)
+
+        #将句柄切换到ppt页面
+        handles = self.driver.window_handles
+        for handle in handles:
+            self.driver.switch_to.window(handle)
+            if '【ppt模板|excel模板|word模板】' in handle.title():
+                break
+        time.sleep(2)
+        #点击excel分类
+        self.driver.find_element_by_css_selector('a[href="/excle/"]').click()
+        time.sleep(2)
+
+        handles = self.driver.window_handles
+        for handle in handles:
+            self.driver.switch_to.window(handle)
+            if 'Excel模板免费下载' in handle.title():
+                break
+        time.sleep(2)
+
+        #输入查询信息
+        self.driver.find_element_by_css_selector('#ggtb-so-kw').send_keys(info)
+
+        #点击查询
+        self.driver.find_element_by_id('ggtb-search-btn').click()
+        time.sleep(2)
+
+        #下拉滚动条
+        self.scroll_bar()
+
+        #点击下载
+        self.driver.find_element_by_css_selector('.gradient-ver-bw .gradient-hor-og').click()
+        time.sleep(1)
+
+        #获取所有handle
+        handles = self.driver.window_handles
+        for handle in handles:
+            self.driver.switch_to.window(handle)
+            if '图片编号:' in handle.title():
+                print('excel下载确认页面')
+                break
+        time.sleep(2)
+
+        #下载确认页点击下载
+        self.driver.find_element_by_css_selector('#downvip >span').click()
+        time.sleep(3)
+
+        # 点击左上角包图网，切换回首页句柄
+        self.driver.find_element_by_css_selector('.head-wrap >a[href="//ibaotu.com"]').click()
+
+
+    #装饰装修:查询、下载
+    def zs_download(self,info):
+        self.driver.find_element_by_css_selector('a[data-spot="装饰·模型"]').click()
+        time.sleep(2)
+
+        #获取当前handle
+        currentHandle = self.driver.current_window_handle
+        #获取所有handle
+        handles = self.driver.window_handles
+        for handle in handles:
+            self.driver.switch_to.window(handle)
+            if '【原创】装饰装修图片_' in handle.title():
+                print('装饰装修页面')
+                break
+
+        time.sleep(2)
+
+        #输入查询信息
+        self.driver.find_element_by_css_selector('input[id="ggtb-so-kw"]').send_keys(info)
+
+        #点击查询
+        self.driver.find_element_by_css_selector('#ggtb-search-btn .icon-search').click()
+        time.sleep(2)
+
+        #下拉滚动条
+        self.scroll_bar()
+
+        #点击下载
+        self.driver.find_element_by_css_selector('.gradient-ver-bw .gradient-hor-og').click()
+        time.sleep(1)
+
+        #下载确认页点击下载
+        self.driver.find_element_by_css_selector('#downvip >span').click()
+        time.sleep(3)
+        self.driver.switch_to.window(currentHandle)
+
+    #插画:查询、下载
+    def ch_download(self,info):
+        self.driver.find_element_by_css_selector('a[data-spot="插画配图"]').click()
+        time.sleep(2)
+
+        #获取当前handle
+        currentHandle = self.driver.current_window_handle
+        #获取所有handle
+        handles = self.driver.window_handles
+        for handle in handles:
+            self.driver.switch_to.window(handle)
+            if '原创】插画配图图片_' in handle.title():
+                print('插画页面')
+                break
+
+        time.sleep(2)
+
+        #输入查询信息
+        self.driver.find_element_by_css_selector('input[id="ggtb-so-kw"]').send_keys(info)
+
+        #点击查询
+        self.driver.find_element_by_css_selector('#ggtb-search-btn .icon-search').click()
+        time.sleep(2)
+
+        #下拉滚动条
+        self.scroll_bar()
+
+        #点击下载
+        self.driver.find_element_by_css_selector('.gradient-ver-bw .gradient-hor-og').click()
+        time.sleep(1)
+
+        #下载确认页点击下载
+        self.driver.find_element_by_css_selector('#downvip >span').click()
+        time.sleep(3)
+        self.driver.switch_to.window(currentHandle)
+
+    #控制滚动条
+    def scroll_bar(self):
+        # 将页面滚动条拖到底部
+        # js = "var q=document.documentElement.scrollTop=100000"
+        # self.driver.execute_script(js)
+        # time.sleep(3)
+
+        #测试用
+        #self.open_browser()
+
+        js = "var q=document.documentElement.scrollTop=1000"
+        self.driver.execute_script(js)
+        time.sleep(2)
+        js = "var q=document.documentElement.scrollTop=3000"
+        self.driver.execute_script(js)
+        time.sleep(2)
+        # 将滚动条移动到页面的顶部
+        js = "var q=document.documentElement.scrollTop=0"
+        self.driver.execute_script(js)
+        time.sleep(3)
 
 if __name__ == '__main__':
     rt = ReGressionTest()
     try:
         rt.open_browser()
-        # rt.gg_download('大数据')
+        rt.gg_download('大数据')
         # rt.sy_download('大数据')
         # rt.zt_download()
         # rt.ui_download('全套界面')
         # rt.ds_download('双十一')
         # rt.dmt_download('年会')
         # rt.search('中秋节')
-        rt.ppt_download('国庆节')
-        rt.word_download('简历')
+        # rt.ppt_download('国庆节')
+        # rt.word_download('简历')
+        # rt.excel_download('工资')
+        #rt.zs_download('地板')
+        #rt.ch_download('卡通')
+
     except:
         print('代码错误')
     finally:
