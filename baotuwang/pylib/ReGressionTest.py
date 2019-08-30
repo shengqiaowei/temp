@@ -327,7 +327,96 @@ class ReGressionTest:
             else:
                 break
 
+    #ppt:查询、下载
+    def ppt_download(self,info):
+        self.driver.find_element_by_css_selector('a[data-spot="办公文档"]').click()
+        time.sleep(2)
 
+        handles = self.driver.window_handles
+        for handle in handles:
+            self.driver.switch_to.window(handle)
+            if '【ppt模板|excel模板|word模板】' in handle.title():
+                break
+        time.sleep(2)
+
+        #输入查询信息
+        self.driver.find_element_by_css_selector('#ggtb-so-kw').send_keys(info)
+
+        #点击查询
+        self.driver.find_element_by_id('ggtb-search-btn').click()
+        time.sleep(2)
+
+        #点击下载
+        self.driver.find_element_by_css_selector('.gradient-ver-bw .gradient-hor-og').click()
+        time.sleep(1)
+
+        #获取所有handle
+        handles = self.driver.window_handles
+        for handle in handles:
+            self.driver.switch_to.window(handle)
+            if '图片编号:' in handle.title():
+                print('ppt下载确认页面')
+                break
+        time.sleep(2)
+
+        #下载确认页点击下载
+        self.driver.find_element_by_css_selector('#downvip >span').click()
+        time.sleep(3)
+
+        #点击左上角包图网，切换回首页句柄
+        self.driver.find_element_by_css_selector('.head-wrap >a[href="//ibaotu.com"]').click()
+
+    #word:查询、下载
+    def word_download(self,info):
+
+        #点击办公文档
+        self.driver.find_element_by_css_selector('a[data-spot="办公文档"]').click()
+        time.sleep(1)
+
+        #将句柄切换到ppt页面
+        handles = self.driver.window_handles
+        for handle in handles:
+            self.driver.switch_to.window(handle)
+            if '【ppt模板|excel模板|word模板】' in handle.title():
+                break
+        time.sleep(2)
+        #点击word分类
+        self.driver.find_element_by_css_selector('a[href="/word/"]').click()
+        time.sleep(2)
+
+        handles = self.driver.window_handles
+        for handle in handles:
+            self.driver.switch_to.window(handle)
+            if 'Word模板免费下载' in handle.title():
+                break
+        time.sleep(2)
+
+        #输入查询信息
+        self.driver.find_element_by_css_selector('#ggtb-so-kw').send_keys(info)
+
+        #点击查询
+        self.driver.find_element_by_id('ggtb-search-btn').click()
+        time.sleep(2)
+
+        #点击下载
+        self.driver.find_element_by_css_selector('.gradient-ver-bw .gradient-hor-og').click()
+        time.sleep(1)
+
+        #获取所有handle
+        handles = self.driver.window_handles
+        for handle in handles:
+            self.driver.switch_to.window(handle)
+            if '图片编号:' in handle.title():
+                print('word下载确认页面')
+                break
+        time.sleep(2)
+
+        #下载确认页点击下载
+        self.driver.find_element_by_css_selector('#downvip >span').click()
+        time.sleep(3)
+
+        # 点击左上角包图网，切换回首页句柄
+        self.driver.find_element_by_css_selector('.head-wrap >a[href="//ibaotu.com"]').click()
 
 
 
@@ -337,14 +426,14 @@ if __name__ == '__main__':
         rt.open_browser()
         # rt.gg_download('大数据')
         # rt.sy_download('大数据')
-        #rt.zt_download()
-        #rt.ui_download('全套界面')
-        #rt.ds_download('双十一')
-        #rt.dmt_download('年会')
-        rt.search('中秋节')
+        # rt.zt_download()
+        # rt.ui_download('全套界面')
+        # rt.ds_download('双十一')
+        # rt.dmt_download('年会')
+        # rt.search('中秋节')
+        rt.ppt_download('国庆节')
+        rt.word_download('简历')
     except:
         print('代码错误')
     finally:
         rt.close_browser()
-
-
