@@ -1,6 +1,6 @@
 from selenium import webdriver
 import time
-
+from selenium.webdriver.common.action_chains import ActionChains
 
 class ReGressionTest:
     # robot调用不同关键字时，都只打开一次浏览器操作,必须要加上
@@ -598,22 +598,52 @@ class ReGressionTest:
         self.driver.execute_script(js)
         time.sleep(3)
 
+    #收藏
+    def collection(self,info):
+        self.driver.find_element_by_id('so-kw').send_keys(info)
+        self.driver.find_element_by_css_selector('a.but-search').click()
+        time.sleep(1)
+
+        #定位第一个素材
+        firstElement = self.driver.find_element_by_css_selector('.hover-pop .sucai-jump')
+
+        #鼠标悬停在第一个素材上
+        ActionChains(self.driver).move_to_element(firstElement).perform()
+        time.sleep(1)
+
+        #点击收藏图标
+        self.driver.find_element_by_css_selector('i.icon-shoucang1').click()
+        time.sleep(1)
+
+        #点击收藏
+        self.driver.find_element_by_css_selector('.col-md-item-btn :nth-child(1)').click()
+        time.sleep(3)
+
+        #点击x
+        self.driver.find_element_by_css_selector('.col-md-head >span.icon-danchuang_guanbiicon1').click()
+        time.sleep(1)
+
+        # 点击左上角包图网，切换回首页句柄
+        self.driver.find_element_by_css_selector('.head-wrap >a[href="//ibaotu.com"]').click()
+        time.sleep(1)
+
 if __name__ == '__main__':
     rt = ReGressionTest()
     try:
         rt.open_browser()
-        rt.gg_download('大数据')
+        #rt.gg_download('大数据')
         # rt.sy_download('大数据')
         # rt.zt_download()
         # rt.ui_download('全套界面')
         # rt.ds_download('双十一')
         # rt.dmt_download('年会')
-        # rt.search('中秋节')
+        #rt.search('中秋节')
         # rt.ppt_download('国庆节')
         # rt.word_download('简历')
         # rt.excel_download('工资')
         #rt.zs_download('地板')
         #rt.ch_download('卡通')
+        rt.collection('人工智能')
 
     except:
         print('代码错误')
