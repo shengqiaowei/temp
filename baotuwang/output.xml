@@ -1,40 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.6.8 on darwin)" generated="20190830 18:29:22.395" rpa="false">
+<robot generator="Robot 3.1.2 (Python 3.6.8 on darwin)" generated="20190904 14:06:00.101" rpa="false">
 <suite id="s1" name="Tc" source="/Users/shengqiaowei/PycharmProjects/temp1/baotuwang/tc">
 <kw name="Open Browser" library="ReGressionTest" type="setup">
-<status status="PASS" starttime="20190830 18:29:22.517" endtime="20190830 18:29:31.660"></status>
+<status status="PASS" starttime="20190904 14:06:00.225" endtime="20190904 14:06:09.600"></status>
 </kw>
-<suite id="s1-s1" name="Collection" source="/Users/shengqiaowei/PycharmProjects/temp1/baotuwang/tc/Collection">
-<suite id="s1-s1-s1" name="Collection" source="/Users/shengqiaowei/PycharmProjects/temp1/baotuwang/tc/Collection/collection.robot">
-<test id="s1-s1-s1-t1" name="全站搜索收藏-tc000100">
-<kw name="Collection" library="ReGressionTest">
+<suite id="s1-s1" name="ClassifiedSearch" source="/Users/shengqiaowei/PycharmProjects/temp1/baotuwang/tc/ClassifiedSearch">
+<suite id="s1-s1-s1" name="ClassSearch" source="/Users/shengqiaowei/PycharmProjects/temp1/baotuwang/tc/ClassifiedSearch/ClassSearch.robot">
+<test id="s1-s1-s1-t1" name="广告设计：查询-下载-tc00001">
+<kw name="Gg Download" library="ReGressionTest">
 <arguments>
-<arg>月饼</arg>
+<arg>中秋节</arg>
 </arguments>
-<status status="PASS" starttime="20190830 18:29:31.667" endtime="20190830 18:29:41.499"></status>
+<status status="PASS" starttime="20190904 14:06:09.610" endtime="20190904 14:06:28.922"></status>
 </kw>
-<status status="PASS" starttime="20190830 18:29:31.666" endtime="20190830 18:29:41.499" critical="yes"></status>
+<status status="PASS" starttime="20190904 14:06:09.608" endtime="20190904 14:06:28.922" critical="yes"></status>
 </test>
-<status status="PASS" starttime="20190830 18:29:31.664" endtime="20190830 18:29:41.500"></status>
+<test id="s1-s1-s1-t2" name="摄影图：查询-下载-tc00002">
+<kw name="Sy Download" library="ReGressionTest">
+<arguments>
+<arg>城市</arg>
+</arguments>
+<status status="PASS" starttime="20190904 14:06:28.924" endtime="20190904 14:07:07.989"></status>
+</kw>
+<status status="PASS" starttime="20190904 14:06:28.923" endtime="20190904 14:07:07.989" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t3" name="字体：下载-tc00003">
+<kw name="Zt Download" library="ReGressionTest">
+<status status="PASS" starttime="20190904 14:07:07.990" endtime="20190904 14:07:28.184"></status>
+</kw>
+<status status="PASS" starttime="20190904 14:07:07.989" endtime="20190904 14:07:28.184" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t4" name="电商淘宝：查询-下载-tc00005">
+<kw name="Ds Download" library="ReGressionTest">
+<arguments>
+<arg>国庆节</arg>
+</arguments>
+<status status="PASS" starttime="20190904 14:07:28.185" endtime="20190904 14:07:47.323"></status>
+</kw>
+<status status="PASS" starttime="20190904 14:07:28.184" endtime="20190904 14:07:47.323" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t5" name="多媒体：查询-下载-tc00006">
+<kw name="Dmt Download" library="ReGressionTest">
+<arguments>
+<arg>音乐</arg>
+</arguments>
+<status status="PASS" starttime="20190904 14:07:47.324" endtime="20190904 14:08:33.549"></status>
+</kw>
+<status status="PASS" starttime="20190904 14:07:47.323" endtime="20190904 14:08:33.549" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t6" name="ppt：查询-下载-tc00007">
+<kw name="Ppt Download" library="ReGressionTest">
+<arguments>
+<arg>简历</arg>
+</arguments>
+<status status="PASS" starttime="20190904 14:08:33.551" endtime="20190904 14:09:01.001"></status>
+</kw>
+<status status="PASS" starttime="20190904 14:08:33.550" endtime="20190904 14:09:01.001" critical="yes"></status>
+</test>
+<test id="s1-s1-s1-t7" name="插画：查询-下载-tc00011">
+<kw name="Ch Download" library="ReGressionTest">
+<arguments>
+<arg>卡通</arg>
+</arguments>
+<status status="PASS" starttime="20190904 14:09:01.003" endtime="20190904 14:09:20.514"></status>
+</kw>
+<status status="PASS" starttime="20190904 14:09:01.002" endtime="20190904 14:09:20.515" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20190904 14:06:09.604" endtime="20190904 14:09:20.516"></status>
 </suite>
-<status status="PASS" starttime="20190830 18:29:31.660" endtime="20190830 18:29:41.504"></status>
+<status status="PASS" starttime="20190904 14:06:09.600" endtime="20190904 14:09:20.522"></status>
 </suite>
 <kw name="Close Browser" library="ReGressionTest" type="teardown">
-<status status="PASS" starttime="20190830 18:29:41.506" endtime="20190830 18:29:41.625"></status>
+<status status="PASS" starttime="20190904 14:09:20.529" endtime="20190904 14:09:20.890"></status>
 </kw>
-<status status="PASS" starttime="20190830 18:29:22.396" endtime="20190830 18:29:41.625"></status>
+<status status="PASS" starttime="20190904 14:06:00.103" endtime="20190904 14:09:20.890"></status>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0">Critical Tests</stat>
-<stat pass="1" fail="0">All Tests</stat>
+<stat pass="7" fail="0">Critical Tests</stat>
+<stat pass="7" fail="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" id="s1" name="Tc">Tc</stat>
-<stat pass="1" fail="0" id="s1-s1" name="Collection">Tc.Collection</stat>
-<stat pass="1" fail="0" id="s1-s1-s1" name="Collection">Tc.Collection.Collection</stat>
+<stat pass="7" fail="0" id="s1" name="Tc">Tc</stat>
+<stat pass="7" fail="0" id="s1-s1" name="ClassifiedSearch">Tc.ClassifiedSearch</stat>
+<stat pass="7" fail="0" id="s1-s1-s1" name="ClassSearch">Tc.ClassifiedSearch.ClassSearch</stat>
 </suite>
 </statistics>
 <errors>

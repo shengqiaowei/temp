@@ -64,3 +64,42 @@ func(1,3,4,5,6,7,name='tom',age = 100)#a=1 c=3 args是一个元组,kwargs是一�
 
 dict1 = {'name':'tom','age':100}
 func(1,3,4,5,6,7,**dict1)#与上面结果一样,但是字典展开必须要用 **变量名
+
+'''
+    每个员工一行，记录了员工的姓名和薪资，
+每行记录 原始文件中并不对齐，中间有或多或少的空格
+
+现要求实现一个python程序，计算出所有员工的税后工资（薪资的90%）和扣税明细，
+以如下格式存入新的文件 file2.txt中，如下所示
+
+'''
+
+rFile = 'file1.txt'
+wFile = 'file2.txt'
+with open(rFile,'r') as r,open(wFile,'w')as w:
+    #先读出所有信息按照换行符切
+    liens = r.read().splitlines()
+    #删除最后一个多余的空字符串
+    del liens[-1]
+    #print(liens)
+
+    #针对每行的数据进行处理
+    for one in liens:
+        #判断文件的内容格式是否正确
+        if one.count(';')==1 and one.count(':')==2:
+            #切出来是一个list 0是name 1是salary
+            listTemp = one.split(';')
+            #print(listTemp)
+            #获取name,salary
+            name = listTemp[0].split(':')[1].strip()
+            salary = int(listTemp[1].split(':')[1].strip())
+            #print(name,salary)
+
+            #排版
+            outPut = 'name:{:>6};  salary:{:>6};  tax:{:>6};  income:{}'.format(name,salary,int(salary*0.1),int(salary*0.9))
+            print(outPut)
+
+            #写入文件
+            w.write(outPut + '\n')
+        else:
+            print('info type err')

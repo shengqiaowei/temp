@@ -14,7 +14,7 @@ class ReGressionTest:
         self.driver.get(self.url)
         self.driver.maximize_window()
         time.sleep(5)
-        #self.driver.implicitly_wait(10)
+        self.driver.implicitly_wait(10)
 
     def close_browser(self):
         self.driver.quit()
@@ -332,7 +332,7 @@ class ReGressionTest:
     def search(self,info):
         #输入关键词
         self.driver.find_element_by_id('so-kw').send_keys(info)
-
+        time.sleep(1)
         #点击查询
         self.driver.find_element_by_css_selector('a.but-search').click()
         time.sleep(1)
@@ -345,6 +345,12 @@ class ReGressionTest:
             if sum<=17:
                 self.driver.find_element_by_css_selector('div.right-wrap :nth-child(%s)' % sum).click()
                 time.sleep(1)
+
+                #点击热门下载和最新上传
+                self.baotu_sort()
+
+                #下拉滚动条
+                self.scroll_bar()
 
                 #点击x号
                 self.driver.find_element_by_css_selector('div.pb-mask').click()
@@ -606,7 +612,7 @@ class ReGressionTest:
 
         #定位第一个素材
         firstElement = self.driver.find_element_by_css_selector('.hover-pop .sucai-jump')
-
+        time.sleep(1)
         #鼠标悬停在第一个素材上
         ActionChains(self.driver).move_to_element(firstElement).perform()
         time.sleep(1)
@@ -624,8 +630,22 @@ class ReGressionTest:
         time.sleep(1)
 
         # 点击左上角包图网，切换回首页句柄
-        self.driver.find_element_by_css_selector('.head-wrap >a[href="//ibaotu.com"]').click()
+        self.driver.find_element_by_css_selector('div.pb-float-head.pb-head.header > div > a > img').click()
         time.sleep(1)
+
+    #排序
+    def baotu_sort(self):
+        # #输入关键词
+        # self.driver.find_element_by_id('so-kw').send_keys(info)
+        # #点击搜索按钮
+        # self.driver.find_element_by_css_selector('a.but-search').click()
+        # time.sleep(1)
+
+        #点击热门下载以及最新上传
+        for i in range(2,4):
+            self.driver.find_element_by_css_selector('div.bt-sort >nav >a:nth-child({})'.format(i)).click()
+            time.sleep(1)
+
 
 if __name__ == '__main__':
     rt = ReGressionTest()
@@ -643,8 +663,8 @@ if __name__ == '__main__':
         # rt.excel_download('工资')
         #rt.zs_download('地板')
         #rt.ch_download('卡通')
-        rt.collection('人工智能')
-
+        #rt.collection('人工智能')
+        #rt.baotu_sort('中秋节')
     except:
         print('代码错误')
     finally:
