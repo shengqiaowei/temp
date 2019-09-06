@@ -1,5 +1,11 @@
 import pprint
 import json
+
+# def func():
+#     print('1')
+#     print('2')
+#     print('3')
+
 fileDir = 'file1.txt'
 def putInfoToDict(fileName):
     resDict = {}
@@ -14,10 +20,10 @@ def putInfoToDict(fileName):
             #print(temp)
 
             #获取课程id
-            lessonId = temp[1].strip()
+            lessonId = int(temp[1].strip())
 
             #获取学生的id
-            studentId = temp[2].split(')')[0].strip()
+            studentId = int(temp[2].split(')')[0].strip())
 
             #获取签到时间
             checkTime = temp[0].split('(')[1].replace("'",'')
@@ -34,9 +40,6 @@ def putInfoToDict(fileName):
             else:
                 resDict[studentId].append(toAdd)
     return resDict
-
-
-
 
 res = putInfoToDict(fileDir)
 
