@@ -607,6 +607,7 @@ class ReGressionTest:
     #收藏
     def collection(self,info):
         self.driver.find_element_by_id('so-kw').send_keys(info)
+        time.sleep(1)
         self.driver.find_element_by_css_selector('a.but-search').click()
         time.sleep(1)
 
