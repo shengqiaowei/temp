@@ -10,7 +10,7 @@ class Seckill:
 
     def open_browser(self):
         self.wd = webdriver.Chrome()
-        #self.wd.implicitly_wait(10)
+        self.wd.implicitly_wait(10)
 
     def close_browser(self):
         self.wd.quit()
@@ -22,81 +22,54 @@ class Seckill:
         time.sleep(1)
         if self.wd.find_element_by_link_text('亲，请登录'):
             self.wd.find_element_by_link_text('亲，请登录').click()
-            print(f'请尽快扫码登录')
-            time.sleep(5)
-            # self.wd.find_element_by_css_selector('#TPL_username_1').send_keys('盛侨威')
-            # time.sleep(3)
-            # self.wd.find_element_by_css_selector('#TPL_password_1').send_keys('qiao.0706')
-            # time.sleep(3)
-            # self.wd.find_element_by_id('J_SubmitStatic').click()
-
+            print('请尽快扫码登录')
+            time.sleep(10)
+            # 打开购物车页面
+            self.wd.get('https://cart.taobao.com/cart.htm')
+        time.sleep(2)
+        now = datetime.datetime.now()
+        print('login success:', now.strftime('%Y-%m-%d %H:%M:%S'))
 
     #选中商品
-    def picking(self,times):
-        # #打开购物车页面
-        # self.wd.get('https://cart.taobao.com/cart.htm')
-        # time.sleep(2)
-        # #勾选商品
-        # self.wd.find_element_by_css_selector("label[for={}]".format(ShoppingNumber)).click()
-        # time.sleep(0.5)
-
-        #进入牛排详情页
-        self.wd.get('https://detail.tmall.com/item.htm?id=582302039775&spm=a21bz.7725273.1998564503.1.c8c33db8Tz0MAp&umpChannel=qianggou&u_channel=qianggou')
-        time.sleep(2)
+    def picking(self,ShoppingNumber,times):
+        is_buyed = False
+        #勾选商品
+        self.wd.find_element_by_css_selector("label[for={}]".format(ShoppingNumber)).click()
+        time.sleep(0.5)
 
         while True:
             now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
-            print(now)
+            print('现在的时间:',now)
             #对比时间，时间到就结算
             if now>times:
-                while True:
-                    # 点击立即购买
-                    try:
-                        buy = self.wd.find_element_by_id('J_LinkBuy')
-                        if buy:
-                            print('购买成功')
-                            buy.click()
-                            #time.sleep(1)
-                            break
-                    except:
-                        print('再次进行购买')
-
-                # #结算
-                # while True:
-                #     try:
-                #         #点击结算
-                #         Settlement = self.wd.find_element_by_css_selector('#J_Go')
-                #         if Settlement:
-                #             Settlement.click()
-                #             print('结算成功,准备提交订单')
-                #             time.sleep(1)
-                #             break
-                #     except:
-                #         print('再次尝试结算')
+                #结算
+                try:
+                    #点击结算
+                    Settlement = self.wd.find_element_by_css_selector('#J_Go')
+                    if Settlement:
+                        Settlement.click()
+                        print('结算成功,准备提交订单')
+                except:
+                    pass
                 #提交订单
                 while True:
                     #提交订单
                     try:
                         #self.wd.refresh()#刷新当前页面
-                        print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f'))
                         order = self.wd.find_element_by_css_selector('.go-btn')
-                        if order:
-                            print('抢购成功，请尽快付款')
+                        if order and is_buyed == False:
                             order.click()
-                            break
+                            print('抢购成功，请尽快付款')
+                            now1 = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
+                            print("抢购成功时间：%s" % now1)
                     except:
                         print('再次尝试提交订单')
                 time.sleep(0.01)
 
-try:
-
+if __name__=='__main__':
     sk = Seckill()
     sk.open_browser()
     sk.login()
-    sk.picking('2019-09-18 00:00')
-
-except Exception as e:
-    print(e)
-finally:
+    sk.picking('J_CheckBox_1510316592582', '2019-09-18 15:28')
     sk.close_browser()
 
