@@ -64,12 +64,12 @@ class Seckill:
                             print("抢购成功时间：%s" % now1)
                     except:
                         print('再次尝试提交订单')
-                time.sleep(0.005)
+                time.sleep(0.01)
 
 if __name__=='__main__':
     sk = Seckill()
     sk.open_browser()
     sk.login()
-    sk.picking('J_CheckBox_1513805857037', '2019-09-19 18:37:00.000000')
+    sk.picking('J_CheckBox_1510316592582', '2019-09-18 15:28')
     sk.close_browser()
 
