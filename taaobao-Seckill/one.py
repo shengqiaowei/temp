@@ -250,7 +250,7 @@ class UsernameLogin:
     #结算
     def place_order(self):
         try:
-            response = s.post(place_order_url,data=place_order_payload,headers=place_order_headers)
+            response = s.post(place_order_url,data=place_order_payload,headers=place_order_headers,allow_redirects=True)
             response.raise_for_status()
             print(response)
             print(response.text)
@@ -261,7 +261,7 @@ class UsernameLogin:
     #提交订单
     def order(self):
         try:
-            response = s.post(order_url,data=order_payload,headers=order_headers)
+            response = s.post(order_url,data=order_payload,headers=order_headers,allow_redirects=True)
             response.raise_for_status()
             print(response)
             print(response.text)
@@ -280,5 +280,5 @@ if __name__ == '__main__':
     ul = UsernameLogin(username, ua, TPL_password2)
     ul.login()
     #ul.check_list()
-    ul.place_order()
+    #ul.place_order()
     ul.order()
