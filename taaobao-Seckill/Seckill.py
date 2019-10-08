@@ -9,10 +9,8 @@ import datetime
 class Seckill:
 
     def open_browser(self):
-        chrome_options = webdriver.ChromeOptions()
-        # 不加载图片，加快访问速度
-        chrome_options.add_experimental_option("prefs", {"profile.managed_default_content_settings.images": 2})
-        self.wd = webdriver.Chrome(options=chrome_options)
+        self.wd = webdriver.Chrome()
+        self.wd.implicitly_wait(10)
 
     def close_browser(self):
         self.wd.quit()
@@ -72,6 +70,6 @@ if __name__=='__main__':
     sk = Seckill()
     sk.open_browser()
     sk.login()
-    sk.picking('J_CheckBox_1524328033834', '2019-09-25 10:00:00.000000')
+    sk.picking('J_CheckBox_1513805857037', '2019-09-19 18:37:00.000000')
     sk.close_browser()
 
